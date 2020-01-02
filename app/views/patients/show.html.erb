@@ -1,0 +1,11 @@
+<%= @patient.name %> 
+
+<% @patient.appointments.each do |app| %>
+     
+<% a = app.appointment_datetime.to_formatted_s(:long) %>
+<% b = a.match(/\d+:\d+/) %> 
+<% c = a.sub(/\d+:\d+/, " at ") %> 
+<%= c.to_s << b.to_s %>   
+<%= app.doctor.name %> 
+<%= link_to app.doctor.name, doctor_path(app.doctor)%>
+<% end %>

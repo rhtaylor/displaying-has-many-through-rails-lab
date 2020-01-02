@@ -1,0 +1,12 @@
+<h1>Doctor: <%= @doctor.name %></h1>
+<h1>Appointments <% @doctor.appointments.each do |app| %></h1> 
+<span>
+<h3><%= app.patient.name %> | <%= link_to app.patient.name, patient_path(app.patient)%> | 
+<% read = app.appointment_datetime.to_formatted_s(:long) %> 
+<% human = read.match(/\d+:\d+/) %> 
+<% human_read = read.sub(/\d+:\d+/, " at ") %>
+<%= human_read.to_s << human.to_s %>
+</h3> 
+
+</span>
+<% end %>
